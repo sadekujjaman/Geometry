@@ -1,3 +1,4 @@
+package linesegment;
 
 import java.util.Scanner;
 

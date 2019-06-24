@@ -69,6 +69,8 @@ public class GrahamMe {
 			}
 		}
 
+		System.out.println("Min: " + minPoint.x + " " + minPoint.y);
+		
 		Point temp = points[0];
 		points[0] = points[min];
 		points[min] = temp;

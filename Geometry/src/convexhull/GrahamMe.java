@@ -34,6 +34,7 @@ public class GrahamMe {
 			return ori;
 		}
 	}
+
 	static Point p0;// = new Point(3, 1);
 
 	public static double dist(Point p1, Point p2) {
@@ -48,9 +49,9 @@ public class GrahamMe {
 
 		int v = (int) val;
 		if (v > 0)
-			return 1; // right clock
+			return 1; // right clock wise
 		else if (v < 0)
-			return -1; // left counter
+			return -1; // left counter clock wise
 
 		return 0;
 
@@ -70,7 +71,7 @@ public class GrahamMe {
 		}
 
 		System.out.println("Min: " + minPoint.x + " " + minPoint.y);
-		
+
 		Point temp = points[0];
 		points[0] = points[min];
 		points[min] = temp;
@@ -79,10 +80,10 @@ public class GrahamMe {
 
 		Arrays.sort(points, 1, points.length, new Point());
 
-		for(Point p : points){
+		for (Point p : points) {
 			System.out.println(p.x + " " + p.y);
 		}
-		
+
 		Stack<Point> stack = new Stack<>();
 		if (points.length < 3) {
 			for (int i = 0; i < points.length; i++) {
@@ -97,7 +98,9 @@ public class GrahamMe {
 
 				int ori = orientation(nextToTop(stack), stack.peek(), points[i]);
 
+				
 				while (true) {
+					System.out.println(i + "-> " + ori);
 					if (ori == -1 || ori == 0)
 						break;
 					stack.pop();
@@ -108,10 +111,10 @@ public class GrahamMe {
 
 		}
 		//
-		// System.out.println(stack.size());
-		// for(Point p : stack){
-		// System.out.println(p.x + " " + p.y);
-		// }
+		 System.out.println(stack.size());
+		 for(Point p : stack){
+		 System.out.println(p.x + " " + p.y);
+		 }
 
 		// Point[] arr = (Point[]) stack.toArray();
 		return new ArrayList<>(stack);
@@ -140,6 +143,7 @@ public class GrahamMe {
 				points[i] = new Point(x, y);
 
 			}
+
 
 			List<Point> ans = getConvexHull(points);
 
